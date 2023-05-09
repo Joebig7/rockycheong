@@ -6,15 +6,7 @@ import { TfiTwitterAlt } from "react-icons/tfi";
 
 export default function Home() {
   return (
-    <Flex
-      px={4}
-      pt={10}
-      direction="column"
-      w="full"
-      align="center"
-      gap={8}
-      h="100vh"
-    >
+    <Flex px={4} pt={10} direction="column" w="full" align="flex-start" gap={8}>
       <Box>
         <Image
           boxSize="100px"
@@ -35,27 +27,31 @@ export default function Home() {
         pb={10}
       >
         <Text>Hi, folks, I'm Rocky.</Text>
-        <Text>I live in Shanghai and work as an backend engineer 👨‍💻.</Text>
+        <Text>
+          I currently live in Shanghai and mainly work as an backend engineer
+          👨‍💻.
+        </Text>
         <Text>
           I am also a{" "}
           <Link as={NextLink} href="/blog-list">
             Blogger
           </Link>{" "}
-          📝 and Traveler 🌍.
+          📝 and a NBA Fan .Last but not least,I also love traveling!
         </Text>
-        <Text>Here are some projects I have made.</Text>
+
+        <Text>Here are some projects I have made.You can contact me by the following social media. </Text>
       </Flex>
 
-      <Flex gap={6} w="full" alignSelf="flex-end">
-        <Link target="_blank" href="https://www.github.com">
+      <Flex gap={4}>
+        <Link target="_blank" href="https://www.github.com/Joebig7">
           <Icon boxSize="28px" as={GoMarkGithub} />
         </Link>
 
-        <Link target="_blank" href="https://www.github.com">
+        <Link target="_blank" href="https://www.zhihu.com/people/joepop7">
           <Icon boxSize="28px" as={SiZhihu} />
         </Link>
 
-        <Link target="_blank" href="https://www.github.com">
+        <Link target="_blank" href="https://twitter.com/Joe39445722">
           <Icon boxSize="28px" as={TfiTwitterAlt} />
         </Link>
       </Flex>

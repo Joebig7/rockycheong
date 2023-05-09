@@ -8,11 +8,10 @@ export default function Header() {
     <Flex
       h="80px"
       mx="auto"
-      direction="row"
       justify="space-between"
       align="center"
       w="100%"
-      maxW={{ sm: "100%", md: "80%", lg: "40%" }}
+      maxW={{ sm: "100%", md: "80%", xl: "40%" }}
       px={{ base: 2 }}
     >
       <Logo />

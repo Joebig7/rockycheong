@@ -11,7 +11,7 @@ export default function CustomeTag({ children, path }) {
       fontWeight="600"
       fontSize="lg"
       href={path}
-      _hover={{ color: "brand.900", textDecoration: "underline" }}
+      _hover={{ color: "brand.500", textDecoration: "underline" }}
     >
       {children}
     </Link>
