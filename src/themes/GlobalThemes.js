@@ -1,4 +1,13 @@
 import { extendTheme } from "@chakra-ui/react";
+import { mode } from "@chakra-ui/theme-tools";
+
+const styles = {
+  global: (props) => ({
+    body: {
+      bg: mode("white", "#24292e")(props),
+    },
+  }),
+};
 
 const theme = extendTheme({
   colors: {
@@ -29,6 +38,8 @@ const theme = extendTheme({
     heading: `'霞鹜文楷', sans-serif`,
     body: `'霞鹜文楷', sans-serif`,
   },
+  config: { initialColorMode: "light", useSystemColorMode: true },
+  styles,
 });
 
 export default theme;

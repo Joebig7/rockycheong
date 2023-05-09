@@ -1,51 +1,64 @@
-import { Container, Stack, Heading, Text } from "@chakra-ui/react";
+import { Flex, Image, Heading, Text, Box, Link, Icon } from "@chakra-ui/react";
+import NextLink from "next/link";
+import { GoMarkGithub } from "react-icons/go";
+import { SiZhihu } from "react-icons/si";
+import { TfiTwitterAlt } from "react-icons/tfi";
 
 export default function Home() {
   return (
-    <Container>
-      <Stack>
-        <Heading fontFamily={"montserrat"}>Hello world.</Heading>
+    <Flex
+      px={4}
+      pt={10}
+      direction="column"
+      w="full"
+      align="center"
+      gap={8}
+      h="100vh"
+    >
+      <Box>
+        <Image
+          boxSize="100px"
+          src="/images/avatar/avatar.jpg"
+          alt="Rocky Chenong"
+          borderRadius="full"
+          border="1px"
+          borderColor="brand.100"
+        />
+      </Box>
+
+      <Flex
+        direction="column"
+        fontSize="xl"
+        fontFamily="montserrat"
+        fontWeight="medium"
+        gap={3}
+        pb={10}
+      >
+        <Text>Hi, folks, I'm Rocky.</Text>
+        <Text>I live in Shanghai and work as an backend engineer 👨‍💻.</Text>
         <Text>
-             显然我们在大气层中达到了一个很高的高度，因为
-          天空一片漆黑，星星也不再闪烁。 同样的 将大海的地平线提升到海平面的幻觉
-          山坡上的旁观者，下面的紫云被抛出，并且
-          汽车似乎漂浮在一个巨大的黑暗球体的中央，它的 上半部分撒满了银子。
-          俯视黑暗的海湾 在下面，我可以看到红光从裂隙中流过 云。
-          显然我们在大气层中达到了一个很高的高度，因为
-          天空一片漆黑，星星也不再闪烁。 同样的 将大海的地平线提升到海平面的幻觉
-          山坡上的旁观者，下面的紫云被抛出，并且
-          汽车似乎漂浮在一个巨大的黑暗球体的中央，它的 上半部分撒满了银子。
-          俯视黑暗的海湾 在下面，我可以看到红光从裂隙中流过 云。
-          显然我们在大气层中达到了一个很高的高度，因为
-          天空一片漆黑，星星也不再闪烁。 同样的 将大海的地平线提升到海平面的幻觉
-          山坡上的旁观者，下面的紫云被抛出，并且
-          汽车似乎漂浮在一个巨大的黑暗球体的中央，它的 上半部分撒满了银子。
-          俯视黑暗的海湾 在下面，我可以看到红光从裂隙中流过 云。
-
-         <br/>
-
-          显然我们在大气层中达到了一个很高的高度，因为
-          天空一片漆黑，星星也不再闪烁。 同样的 将大海的地平线提升到海平面的幻觉
-          山坡上的旁观者，下面的紫云被抛出，并且
-          汽车似乎漂浮在一个巨大的黑暗球体的中央，它的 上半部分撒满了银子。
-          俯视黑暗的海湾 在下面，我可以看到红光从裂隙中流过 云。
-          显然我们在大气层中达到了一个很高的高度，因为
-          天空一片漆黑，星星也不再闪烁。 同样的 将大海的地平线提升到海平面的幻觉
-          山坡上的旁观者，下面的紫云被抛出，并且
-          汽车似乎漂浮在一个巨大的黑暗球体的中央，它的 上半部分撒满了银子。
-          俯视黑暗的海湾 在下面，我可以看到红光从裂隙中流过 云。
-
-          显然我们在大气层中达到了一个很高的高度，因为
-          天空一片漆黑，星星也不再闪烁。 同样的 将大海的地平线提升到海平面的幻觉
-          山坡上的旁观者，下面的紫云被抛出，并且
-          汽车似乎漂浮在一个巨大的黑暗球体的中央，它的 上半部分撒满了银子。
-          俯视黑暗的海湾 在下面，我可以看到红光从裂隙中流过 云。     显然我们在大气层中达到了一个很高的高度，因为
-          天空一片漆黑，星星也不再闪烁。 同样的 将大海的地平线提升到海平面的幻觉
-          山坡上的旁观者，下面的紫云被抛出，并且
-          汽车似乎漂浮在一个巨大的黑暗球体的中央，它的 上半部分撒满了银子。
-          俯视黑暗的海湾 在下面，我可以看到红光从裂隙中流过 云。
+          I am also a{" "}
+          <Link as={NextLink} href="/blog-list">
+            Blogger
+          </Link>{" "}
+          📝 and Traveler 🌍.
         </Text>
-      </Stack>
-    </Container>
+        <Text>Here are some projects I have made.</Text>
+      </Flex>
+
+      <Flex gap={6} w="full" alignSelf="flex-end">
+        <Link target="_blank" href="https://www.github.com">
+          <Icon boxSize="28px" as={GoMarkGithub} />
+        </Link>
+
+        <Link target="_blank" href="https://www.github.com">
+          <Icon boxSize="28px" as={SiZhihu} />
+        </Link>
+
+        <Link target="_blank" href="https://www.github.com">
+          <Icon boxSize="28px" as={TfiTwitterAlt} />
+        </Link>
+      </Flex>
+    </Flex>
   );
 }
