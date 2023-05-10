@@ -6,7 +6,14 @@ import { TfiTwitterAlt } from "react-icons/tfi";
 
 export default function Home() {
   return (
-    <Flex px={4} pt={10} direction="column" w="full" align="flex-start" gap={8}>
+    <Flex
+      px={4}
+      pt={{ base: 0, md: 10 }}
+      direction="column"
+      w="full"
+      align="flex-start"
+      gap={8}
+    >
       <Box>
         <Image
           boxSize="100px"
@@ -36,10 +43,12 @@ export default function Home() {
           <Link as={NextLink} href="/blog-list">
             Blogger
           </Link>{" "}
-          📝 and a NBA Fan .Last but not least,I also love traveling!
+          📝 and a NBA Fan .
         </Text>
+        <Text>Last but not least,I also love traveling!</Text>
 
-        <Text>Here are some projects I have made.You can contact me by the following social media. </Text>
+        <Text>Here are some projects I have made.</Text>
+        <Text>You can contact me by the following social media.</Text>
       </Flex>
 
       <Flex gap={4}>

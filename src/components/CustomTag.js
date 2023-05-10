@@ -9,7 +9,7 @@ export default function CustomeTag({ children, path }) {
       px="2"
       as={NextLink}
       fontWeight="600"
-      fontSize="lg"
+      fontSize="xl"
       href={path}
       _hover={{ color: "brand.500", textDecoration: "underline" }}
     >
