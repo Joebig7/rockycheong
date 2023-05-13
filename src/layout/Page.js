@@ -1,12 +1,6 @@
 import Header from "./Header";
 import Footer from "./Footer";
-import {
-  Container,
-  Box,
-  Flex,
-  useColorModeValue,
-  VStack,
-} from "@chakra-ui/react";
+import { Container, Flex } from "@chakra-ui/react";
 
 export default function Page({ children }) {
   return (

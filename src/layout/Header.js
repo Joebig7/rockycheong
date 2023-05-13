@@ -23,7 +23,7 @@ export default function Header() {
           justify="center"
           sx={{ gap: "10px" }}
         >
-          <CustomerTag path="/blog-list">文章</CustomerTag>
+          <CustomerTag path="/articles">文章</CustomerTag>
           <CustomerTag path="/tags">标签</CustomerTag>
           <CustomerTag path="/about">关于</CustomerTag>
         </Flex>

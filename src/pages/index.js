@@ -27,7 +27,7 @@ export default function Home() {
 
       <Flex
         direction="column"
-        fontSize="xl"
+        fontSize={{ base: "md", md: "xl" }}
         fontFamily="montserrat"
         fontWeight="medium"
         gap={3}

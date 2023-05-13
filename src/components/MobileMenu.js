@@ -37,7 +37,7 @@ export default function MobileMenu() {
                 as={NextLink}
                 fontWeight="600"
                 fontSize="2xl"
-                href="/blog-list"
+                href="/articles"
                 textDecor={"underline"}
                 _hover={{ color: "brand.500", textDecoration: "underline" }}
                 onClick={onClose}
