@@ -4,7 +4,7 @@ import { FiSun, FiMoon } from "react-icons/fi";
 import { Icon } from "@chakra-ui/react";
 
 function CustomerIcon({ children }) {
-  return <Icon pt={1} pr={1} boxSize={6} as={children} />;
+  return <Icon mt="5px" pt={1}  boxSize={6} as={children} />;
 }
 
 export default function ColorMode() {

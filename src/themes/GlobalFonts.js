@@ -4,11 +4,11 @@ const Fonts = () => (
   <Global
     styles={`
       @font-face {
-        font-family: '霞鹜文楷';
+        font-family: 'Source Han Sans';
         font-style: normal;
         font-weight: 400;
         font-display: swap;
-        src: url('/fonts/LXGWWenKaiScreen.ttf') format('truetype');
+        src: url('/fonts/SourceHanSansSC-VF.ttf') format('truetype');
       }`}
   />
 );

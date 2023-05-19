@@ -1,7 +1,7 @@
 import { getMDXComponent } from "mdx-bundler/client";
 import { useMemo } from "react";
 import { getAllPostSlugs, getPostData } from "../../lib/blogPosts";
-import { Flex, Heading, Text,Box } from "@chakra-ui/react";
+import { Flex, Heading, Text, Box } from "@chakra-ui/react";
 
 export const getStaticProps = async ({ params }) => {
   const postData = await getPostData(params.slug);
@@ -24,14 +24,19 @@ export default function BlogPost({ code, frontmatter }) {
   const Component = useMemo(() => getMDXComponent(code), [code]);
 
   return (
-    <Flex direction="column" gap={6}>
+    <Flex  direction="column" px={1} gap={6}>
       <Heading>{frontmatter.title}</Heading>
       <Text>{frontmatter.date}</Text>
-       
-      <Box>
-      <Component />
+
+      <Box
+        fontSize={{ base: "lg", md: "lg" }}
+
+        letterSpacing="wider"
+        fontWeight={400}
+        lineHeight="tall"
+      >
+        <Component />
       </Box>
- 
     </Flex>
   );
 }

@@ -45,7 +45,7 @@ export function getAllPostSlugs() {
   return paths;
 }
 
-export function getAllFileForntmatter() {
+export function getAllFileFrontmatter() {
   const fileNames = fs.readdirSync(blogDirectory);
   return fileNames.reduce((allPosts, postSlug) => {
     const source = fs.readFileSync(path.join(blogDirectory, postSlug), "utf8");
@@ -65,20 +65,14 @@ export function getAllFileForntmatter() {
 export async function getPostData(slug) {
   const fullPath = path.join(blogDirectory, `${slug}.md`);
   const source = fs.readFileSync(fullPath, "utf8");
-  const { code, frontmatter } = await bundleMDX(
-    { source: source },
-    {
-      xdmOptions(options) {
-        options.remarkPlugins = [...(options?.remarkPlugins ?? []), remarkGfm];
-        options.rehypePlugins = [
-          ...(options?.rehypePlugins ?? []),
-          rehypePrism,
-        ];
-        return options;
-      },
-    }
-  );
-
+  const { code, frontmatter } = await bundleMDX({
+    source: source,
+    xdmOptions(options) {
+      options.remarkPlugins = [...(options.remarkPlugins ?? [])];
+      options.rehypePlugins = [...(options.rehypePlugins ?? [])];
+      return options;
+    },
+  });
   return {
     slug,
     frontmatter,

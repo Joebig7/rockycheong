@@ -5,7 +5,7 @@ import { Container, Flex } from "@chakra-ui/react";
 export default function Page({ children }) {
   return (
     <>
-      <Flex w="100%" minHeight="100vh" direction="column">
+      {/* <Flex w="100%" minHeight="100vh" direction="column"> */}
         <Header />
         <Container
           p={0}
@@ -16,7 +16,7 @@ export default function Page({ children }) {
           {children}
         </Container>
         <Footer />
-      </Flex>
+      {/* </Flex> */}
     </>
   );
 }

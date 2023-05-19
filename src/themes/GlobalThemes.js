@@ -35,8 +35,8 @@ const theme = extendTheme({
     },
   },
   fonts: {
-    heading: `'霞鹜文楷', sans-serif`,
-    body: `'霞鹜文楷', sans-serif`,
+    heading: `'Source Han Sans',sans-serif`,
+    body: `'Source Han Sans',sans-serif`,
   },
   config: { initialColorMode: "light", useSystemColorMode: true },
   styles,
