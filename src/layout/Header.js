@@ -7,8 +7,20 @@ import MobileMenu from "../components/MobileMenu";
 
 export default function Header() {
   const borderColor = useColorModeValue("gray.200", "gray.800");
+  const bgColor = useColorModeValue("white", "#24292e");
   return (
-    <Box borderBottom="1px" borderColor={borderColor}>
+    <Box
+      borderBottom="1px"
+      borderColor={borderColor}
+      boxShadow="sm"
+      bg={bgColor}
+      sx={{
+        position: "-webkit-sticky",
+        position: "sticky",
+        top: "0",
+        "z-index": "10",
+      }}
+    >
       <Flex
         h="60px"
         mx="auto"

@@ -6,7 +6,6 @@ export default function CustomTag({ children, path }) {
   const hoverBg = useColorModeValue("white", "gray.800");
   const hoverFontBg = useColorModeValue("black", "white");
   const fontColor = useColorModeValue("#737373", "#7fa3a3");
-
   return (
     <Button
       w="52px"
