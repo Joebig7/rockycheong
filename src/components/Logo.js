@@ -1,12 +1,12 @@
-import { Box, Link, useColorModeValue } from "@chakra-ui/react";
+import { Box, Link } from "@chakra-ui/react";
 import NextLink from "next/link";
+import { Website_url } from "../data/global-data";
 
 export default function Logo() {
-  const bg = useColorModeValue("brand.700", "dark.500");
   return (
     <Box
-      w={{ base: "170px", md: "180px" }}
-      bg={bg}
+      w="182px"
+      bgGradient="linear(to-r,brand.primary,#00c6ff)"
       textAlign="center"
       transition="transform .3s"
       _hover={{
@@ -15,17 +15,17 @@ export default function Logo() {
         },
       }}
       borderRadius="sm"
+      ml={{ base: "1", laptop: "0" }}
     >
       <Link
-        fontSize={{ base: "lg", md: "xl" }}
+        fontSize="xl"
         fontWeight="700"
-        fontFamily="inter"
         as={NextLink}
         href="/"
         _hover={{ textDecor: "none" }}
         color="white"
       >
-        rockycheong.com
+        {Website_url}
       </Link>
     </Box>
   );
