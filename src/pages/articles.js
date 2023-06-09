@@ -1,20 +1,22 @@
 import {
-  Tag,
   Flex,
-  Text,
   Heading,
+  Text,
   Link,
+  Image,
+  Divider,
+  Box,
+  AbsoluteCenter,
+  AspectRatio,
   useColorModeValue,
-  useMediaQuery,
 } from "@chakra-ui/react";
 import NextLink from "next/link";
 
-import { getAllFileFrontmatter } from "../lib/blogPosts";
+import { getAllFileFrontmatter } from "../lib/blog-posts-utils";
 
 //获取所有文章的frontmatter
 export async function getStaticProps() {
   const allPostFrontMatter = await getAllFileFrontmatter();
-
   return {
     props: {
       allPostFrontMatter,
@@ -22,83 +24,106 @@ export async function getStaticProps() {
   };
 }
 
-function groupArticles(articles) {
-  const groupedArticles = articles.reduce((result, current) => {
-    const year = new Date(current.publishDate).getFullYear();
-    if (!result[year]) {
-      result[year] = [];
-    }
-    result[year].push(current);
-    return result;
-  }, {});
-
-  for (const key in groupedArticles) {
-    groupedArticles[key].sort(
-      (a, b) => new Date(b.publishDate) - new Date(a.publishDate)
-    );
+function TopArticle({ allPostFrontMatter, bgColor }) {
+  console.log(`allPostFrontMatter ${JSON.stringify(allPostFrontMatter)}`)
+  let topArticleArr = allPostFrontMatter.filter((article) => article.isTop);
+  if (topArticleArr.length === 0) {
+    return null;
   }
+  let topArticle = topArticleArr[0];
+  return (
+    <Flex direction="column">
+      <Box position="relative" mt="20px" px={{ base: "18px", sm: "6px" }}>
+        <Divider />
+        <AbsoluteCenter bg={bgColor} color="gray.400" px="4">
+          【置顶文章】
+        </AbsoluteCenter>
+      </Box>
 
-  return groupedArticles;
+      <Flex mt={4} direction="column" px={{ base: "18px", sm: "6px" }}>
+        <Link
+          as={NextLink}
+          href={`/posts/${topArticle.slug}`}
+          _hover={{ textDecor: "none" }}
+        >
+          <AspectRatio ratio={21 / 9}>
+            <Image
+              src={topArticle.cover}
+              alt="top article cover"
+              objectFit="cover"
+              borderRadius="xl"
+              boxShadow="xl"
+            />
+          </AspectRatio>
+
+          <Heading as="h1" mt={4} fontSize="22px">
+            {topArticle.title}
+          </Heading>
+
+          <Text noOfLines={2} mt={2}>
+            {topArticle.description}
+          </Text>
+        </Link>
+      </Flex>
+    </Flex>
+  );
 }
 
 export default function Articles({ allPostFrontMatter }) {
-  const tagBg = useColorModeValue("brand.700", "dark.500");
+  const bgColor = useColorModeValue("brand.background", "dark.background");
+  const color = useColorModeValue("brand.foreground", "dark.foreground");
 
-  const [isSmallerThan] = useMediaQuery("(max-width: 480px)", {
-    ssr: true,
-    fallback: false,
-  });
-
-  const groupedArticles = groupArticles(allPostFrontMatter);
-  console.log(groupedArticles);
   return (
-    <Flex direction="column" gap={10}>
-      {Object.getOwnPropertyNames(groupedArticles)
-        .sort((a, b) => b - a)
-        .map((obj) => (
-          <Flex px={2} key={obj} direction="column" gap={4}>
-            <Heading
-              as="h1"
-              fontFamily="sans-serif"
-              fontSize="4xl"
-              fontWeight="900"
-              pb={4}
-            >
-              {obj}
-            </Heading>
-            {groupedArticles[obj].map((article) => (
-              <Flex
-                fontSize={{ base: "md", md: "xl" }}
-                fontWeight={600}
-                justify="space-between"
-              >
-                <Text> {article.publishDate}</Text>
-                <Link
-                  as={NextLink}
-                  _hover={{
-                    textDecor: "underline",
-                    color: "brand.700",
-                    fontWeight: 900,
-                  }}
-                  href={`/posts/${article.slug}`}
-                  pr={{ base: "10px", md: "200px" }}
-                  width="70%"
-                >
-                  {article.title}
-                </Link>
+    <Flex direction="column" maxWidth="680px">
+      <TopArticle allPostFrontMatter={allPostFrontMatter} bgColor={bgColor} />
 
-                <Tag
-                  size="lg"
-                  bg={tagBg}
-                  color="white"
-                  fontWeight="600"
-                  hidden={isSmallerThan && "hidden"}
-                  h="10px"
-                >
-                  {article.tag}
-                </Tag>
-              </Flex>
-            ))}
+      <Box
+        position="relative"
+        mt={16}
+        mb="-12px"
+        px={{ base: "18px", sm: "6px" }}
+      >
+        <Divider />
+        <AbsoluteCenter bg={bgColor} color="gray.400" px="4">
+          【从新到旧浏览】
+        </AbsoluteCenter>
+      </Box>
+      {allPostFrontMatter
+        .sort((a, b) => {
+          let dateA = new Date(a.publishDate);
+          let dateB = new Date(b.publishDate);
+          if (dateA > dateB) {
+            return -1;
+          } else {
+            return 1;
+          }
+        })
+        .map((article) => (
+          <Flex
+            direction="column"
+            my={6}
+            mx="auto"
+            px={{ base: "18px", sm: "6px" }}
+            key={article.id}
+          >
+            <Flex direction="column">
+              <Link
+                as={NextLink}
+                href={`/posts/${article.slug}`}
+                _hover={{ textDecor: "none" }}
+              >
+                <Heading as="h1" fontSize="22px">
+                  {article.title}
+                </Heading>
+              </Link>
+
+              <Text pt={2} color={color} noOfLines={2}>
+                {article.description}
+              </Text>
+              <Text pt={1} color="gray.400">
+                {article.publishDate}
+              </Text>
+            </Flex>
           </Flex>
         ))}
     </Flex>

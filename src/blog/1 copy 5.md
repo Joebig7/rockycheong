@@ -1,36 +1,28 @@
 ---
-id: 1
-title: '记录一次 AIGC Hackathon 参赛经历和收获'
-publishDate: '2022-10-11'
-tags: 'coding,product,design'
+id: 8
+title: '测试文章'
+publishDate: '2022-05-11'
+tags: 'product,design'
 author: "rockycheong"
 isDraft: false
-isTop: true
-cover: /images/projects/1.jpg
-description: "公司在 5 月上旬的时候举办了一场 AIGC Hackathon 比赛，我也参与到了这次 AIGC 的浪潮当中。"
+isTop: false
+description: "创建一个从设计到开发的有效交接过程是任何产品开发周期中的一个关键步骤。然而，正如任何一个设计师所知道的那样，把你精心设计的产品送到开发团队手中，可能是一种令人紧张的经历。这就像等待一个蛋糕的烘烤--你会忍不住想知道它在烤箱中会如何演变，以及当你把它从烤箱中拿出来时它的味道会如何。"
 ---
 
-import ImageZoomWrapper from "./image-zoom"
+import {Box, Heading} from '@chakra-ui/react'
 
-<ImageZoomWrapper src="https://i.imgur.com/NmV3S5I.png" alt="Dan Abramov"/>
-
+<Box backgroundColor="blue" fontSize="30px">
+hello
+</Box>
 
 # 标题1
 
-[MDX](https://mdxjs.com "title")
+> 引用test
 
-> A greater than…
-
-
-```javascript
- function test(){
-    console.log("test");
- }
-````
 
 ## 标题2
 
-创建一个从设计到开发*asterisks*的有效交接过程是任何产品开发周期中的一个关键步骤。然而，正如任何一个设计师所知道的那样，把你精心设计的产品送到开发团队手中，可能是一种令人紧张的经历。这就像等待一个蛋糕的烘烤--你会忍不住想知道它在烤箱中会如何演变，以及当你把它从烤箱中拿出来时它的味道会如何。
+创建一个从设计到开发的有效交接过程是任何产品开发周期中的一个关键步骤。然而，正如任何一个设计师所知道的那样，把你精心设计的产品送到开发团队手中，可能是一种令人紧张的经历。这就像等待一个蛋糕的烘烤--你会忍不住想知道它在烤箱中会如何演变，以及当你把它从烤箱中拿出来时它的味道会如何。
 
 设计师和开发者之间的关系一直都是有点坎坷的。尽管有像Figma的检查功能这样的工具（它允许开发人员检查设计，并有可能以更精简的方式将其转换为代码），但这两个角色之间仍然存在许多障碍。通常情况下，设计的细节被隐藏在更加详细的部分中，使得开发人员很难准确地解释设计师的意图。
 
@@ -69,59 +61,18 @@ Figma 的检查面板允许您查看任何选定对象/层的属性和值。(图
 
 一定要与你的开发人员保持一致，了解他们希望你如何处理图标和图像。这可能是他们希望你在一个单一的ZIP文件中导出所有的图像和图标并与他们分享，或者他们希望自己导出图像和图标。如果是后者，重要的是要详细解释导出图像和图标的正确方法，以便他们能够自己处理导出过程
 
-`java backticks`
+
 
 - java
 - script
 - nodejs
 
-### 标题3
-内容3
+## 标题3
 
-
-#### 标题4
-内容4
-
-##### 标题5
-
-
-###### 标题6
-
+```javascript
+ function test(){
+    console.log("test");
+ }
+````
 
 ![](https://i.imgur.com/NmV3S5I.png)
-
-* asterisks for unordered items
-* asterisks for unordered items2
-* asterisks for unordered items3
-
-
-1. java
-2. javascript
-3. python
-4. nodejs
-5. iphone
-6. android
-
-
-```js
-backtick.fences('for blocks')
-```
-
-
-Two **asterisks** for strong.
-
-* asterisks for unordered
-
-
-## table
-
-| a | b  |  c |  d  |
-| - | :- | -: | :-: |
-|1|2|3|4|
-
-
-
-
-
-- [ ] to do
-- [x] done

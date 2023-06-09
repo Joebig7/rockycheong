@@ -2,8 +2,10 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { bundleMDX } from "mdx-bundler";
+import remarkGfm from "remark-gfm";
 
 const blogDirectory = path.join(process.cwd(), "src/blog");
+const blogComponentDir = path.join(process.cwd(), "src/components/mdx");
 
 export function getBlogPostData() {
   const fileNames = fs.readdirSync(blogDirectory);
@@ -45,13 +47,65 @@ export function getAllPostSlugs() {
   return paths;
 }
 
+export function getAllTags() {
+  const fileNames = fs.readdirSync(blogDirectory);
+  let set = new Set();
+  fileNames.reduce((allPosts, postSlug) => {
+    const source = fs.readFileSync(path.join(blogDirectory, postSlug), "utf8");
+    const { data } = matter(source);
+    console.log(JSON.stringify(data));
+    let tagsArray = data.tags.split(",");
+    tagsArray.map((tag) => set.add(tag));
+  }, []);
+
+  return Array.from(set);
+}
+
+export function getAllTagsPath() {
+  let tags = getAllTags();
+  console.log("tag===" + tags);
+  const paths = tags.map((tag) => {
+    return {
+      params: {
+        slug: tag,
+      },
+    };
+  });
+  return paths;
+}
+
+export function getFileFrontmatterByTag(tag) {
+  const fileNames = fs.readdirSync(blogDirectory);
+  return fileNames
+    .reduce((allPosts, postSlug) => {
+      const source = fs.readFileSync(
+        path.join(blogDirectory, postSlug),
+        "utf8"
+      );
+      const { data } = matter(source);
+      return [
+        {
+          ...data,
+          slug: postSlug.replace(".md", ""),
+        },
+        ...allPosts,
+      ];
+    }, [])
+    .filter((frontmatter) => {
+      let tagArray = frontmatter.tags.split(",");
+      if (tagArray.includes(tag)) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+}
+
 export function getAllFileFrontmatter() {
   const fileNames = fs.readdirSync(blogDirectory);
   return fileNames.reduce((allPosts, postSlug) => {
     const source = fs.readFileSync(path.join(blogDirectory, postSlug), "utf8");
-
     const { data } = matter(source);
-
     return [
       {
         ...data,
@@ -67,9 +121,20 @@ export async function getPostData(slug) {
   const source = fs.readFileSync(fullPath, "utf8");
   const { code, frontmatter } = await bundleMDX({
     source: source,
-    xdmOptions(options) {
-      options.remarkPlugins = [...(options.remarkPlugins ?? [])];
+    cwd: blogComponentDir,
+    mdxOptions(options, frontmatter) {
+      options.remarkPlugins = [...(options.remarkPlugins ?? []), remarkGfm];
       options.rehypePlugins = [...(options.rehypePlugins ?? [])];
+      return options;
+    },
+    esbuildOptions(options, frontmatter) {
+      options.minify = false;
+      options.target = ["es2015"];
+      //   配置esbuild解析js文件通过jsx方式
+      options.loader = {
+        ...options.loader,
+        ".js": "jsx",
+      };
       return options;
     },
   });

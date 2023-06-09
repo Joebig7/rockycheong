@@ -15,7 +15,7 @@ export default function Logo() {
         },
       }}
       borderRadius="sm"
-      ml={{ base: "1", laptop: "0" }}
+      ml={{ base: "1", xl: "0" }}
     >
       <Link
         fontSize="xl"

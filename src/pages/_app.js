@@ -1,12 +1,14 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import PageLayout from "../components/layout/page";
 import theme from "../config/global-theme";
-import '@fontsource/inter';
+import "@fontsource/inter";
 import "@fontsource/noto-serif-sc/400.css";
 import "@fontsource/noto-serif-sc/700.css";
 import "@fontsource/noto-sans-sc/400.css";
 import "@fontsource/noto-sans-sc/700.css";
-import '@fontsource-variable/jetbrains-mono';
+import "@fontsource-variable/jetbrains-mono";
+import "../styles/globals.css";
+import styles from "../styles/image-zoom.css";
 
 function MyApp({ Component, pageProps }) {
   return (

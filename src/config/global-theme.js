@@ -32,16 +32,6 @@ const theme = extendTheme({
       destructive: "hsl(0,100%,50%)",
       "destructive-foreground": "hsl(210,40%,98%)",
       ring: "hsl(215,20.2%,65.1%)",
-
-      100: "hsl(190, 77%, 88%)",
-      200: "hsl(190, 76%, 82%)",
-      300: "hsl(189, 75%, 75%)",
-      400: "hsl(190, 74%, 59%)",
-      500: "hsl(190, 100%, 42%)",
-      600: "hsl(195, 100%, 39%)",
-      700: "hsl(224, 82% ,56%)",
-      800: "hsl(214, 97%, 27%)",
-      900: "hsl(239, 94%, 19%)",
     },
     dark: {
       background: "hsl(224,71%,4%)",
@@ -63,16 +53,6 @@ const theme = extendTheme({
       destructive: "hsl(0,63%,31%)",
       "destructive-foreground": "hsl(210,40%,98%)",
       ring: "hsl(216,34%,17%)",
-
-      100: "hsl(159, 56%, 7%)",
-      200: "hsl(155, 43%, 18%)",
-      300: "hsl(153, 40%, 30%)",
-      400: "hsl(153, 39%, 41%)",
-      500: "hsl(152, 41%, 52%)",
-      600: "hsl(150, 42%, 62%)",
-      700: "hsl(147, 43%, 71%)",
-      800: "hsl(141, 45%, 81%)",
-      900: "hsl(129, 53%, 90%)",
     },
   },
   fonts: {
@@ -82,9 +62,11 @@ const theme = extendTheme({
   config: { initialColorMode: "light", useSystemColorMode: true },
   styles,
   breakpoints: {
-    tablet: "550px",
-    laptop: "1100px",
-    desktop: "1500px",
+    sm: "550px",
+    md: "768px",
+    lg: "992px",
+    xl: "1100px",
+    "2xl": "1500px",
   },
 });
 

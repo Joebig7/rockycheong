@@ -9,9 +9,8 @@ export default function Page({ children }) {
         <Header />
         <Container
           p={0}
-          w="100%"
           flexGrow={1}
-          maxW={{ base: "100%", md:"702px" }}
+          maxW={{ base: "100%", md: "692px" }}
         >
           {children}
         </Container>

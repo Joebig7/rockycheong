@@ -26,12 +26,13 @@ export default function Header() {
         mx="auto"
         justify="space-between"
         align="center"
-        w={{ laptop: "3xl" }}
+        w={{ md: "692px" }}
+        px="6px"
       >
         <Logo />
-        <Flex justify="space-between" gap={{"base":"1.5","tablet":"1"}}>
+        <Flex justify="space-between" gap={{"base":"2","md":"1"}}>
           <Flex
-            display={{ base: "none", tablet: "flex" }}
+            display={{ base: "none", md: "flex" }}
             justify="center"
             gap={2}
           >

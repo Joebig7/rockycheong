@@ -34,19 +34,20 @@ function MobileMenuItem({ path, onClose, children }) {
 
 export default function MobileMenu() {
   const menuColor = useColorModeValue("brand.foreground", "brand.background");
+  const bgColor = useColorModeValue("brand.background","dark.background");
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <>
-      <Box as="button" onClick={onOpen} pt="2px" display={{ md: "none" }}>
+      <Box as="button" onClick={onOpen} pt="2px"  display={{ md: "none" }}>
         <Icon boxSize={6} color={menuColor} as={HiMenu} />
       </Box>
-      <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
+      <Drawer isOpen={isOpen}  placement="right" onClose={onClose}>
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
-          <DrawerHeader></DrawerHeader>
-          <DrawerBody>
+          <DrawerHeader bg={bgColor}></DrawerHeader>
+          <DrawerBody bg={bgColor}>
             <Flex direction="column" align="flex-start" gap={4}>
               <MobileMenuItem path="/articles" onClose={onClose}>
                 文章
@@ -56,6 +57,9 @@ export default function MobileMenu() {
               </MobileMenuItem>
               <MobileMenuItem path="/about" onClose={onClose}>
                 关于
+              </MobileMenuItem>
+              <MobileMenuItem path="/feature" onClose={onClose}>
+                What's new
               </MobileMenuItem>
             </Flex>
           </DrawerBody>

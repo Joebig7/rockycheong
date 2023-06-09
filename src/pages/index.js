@@ -20,12 +20,13 @@ export default function Home() {
   const textColor = useColorModeValue("#525252", "#D4D4D4");
 
   return (
-    <Flex direction="column" px="6px" pt="56px">
+    <Flex direction="column" pt={14}>
       <Flex
         direction="column"
         borderBottom="1px"
         borderColor={borderColor}
         boxShadow="sm"
+        px="6px"
       >
         <Box>
           <Image
@@ -34,17 +35,17 @@ export default function Home() {
             alt="Rocky Cheong"
             borderRadius="full"
             border="1px"
-            borderColor="brand.100"
+            borderColor="brand.secondary"
           />
         </Box>
-        <Heading fontFamily="inter" as="h1" fontSize="48px" fontWeight={600}>
+        <Heading as="h1" fontSize="48px" fontWeight={600}>
           Rocky
         </Heading>
-        <Text mt="24px" fontFamily="inter" fontSize="18px">
+        <Text mt={6} fontSize="lg">
           Hi folks,I am a software engineer with 4 years of work experience.😀
         </Text>
 
-        <Text mt="12px" fontFamily="inter" fontSize="18px">
+        <Text mt={3} fontSize="lg">
           I am also a{" "}
           <Link as={NextLink} href="/articles">
             Blogger
@@ -52,49 +53,45 @@ export default function Home() {
           📝 and a NBA Fan 🏀.
         </Text>
 
-        <Text mt="12px" fontFamily="inter" fontSize="18px">
+        <Text mt={3} fontSize="lg">
           Last but not least,I also love traveling! ✈️
         </Text>
-        <Flex gap={4} mt="28px" mb="40px">
+        <Flex gap={4} mt={7} mb={10}>
           <Link target="_blank" href="https://www.github.com/Joebig7">
-            <Icon boxSize="28px" as={GoMarkGithub} />
+            <Icon boxSize={7} as={GoMarkGithub} />
           </Link>
 
           <Link target="_blank" href="https://www.zhihu.com/people/joepop7">
-            <Icon boxSize="28px" as={SiZhihu} />
+            <Icon boxSize={7} as={SiZhihu} />
           </Link>
 
           <Link target="_blank" href="https://twitter.com/Joe39445722">
-            <Icon boxSize="28px" as={TfiTwitterAlt} />
+            <Icon boxSize={7} as={TfiTwitterAlt} />
           </Link>
         </Flex>
       </Flex>
-      <Flex direction="column" mt="46px">
-        <Flex direction={"column"} mb="40px" px={{ base: "10px", sm: "0" }}>
-          <Heading fontSize="22px" fontWeight={500} mb="16px">
+      <Flex direction="column" mt={12}>
+        <Flex direction={"column"} mb="40px" px={{ base: 2.5, md: "0" }}>
+          <Heading
+            fontSize="2xl"
+            fontFamily="noto serif sc"
+            fontWeight={500}
+            mb="16px"
+          >
             👨‍💻工作项目
           </Heading>
-          <Flex
-            column="column"
-            flexWrap="wrap"
-            justifyContent="center"
-            gap="26px"
-          >
-            {projectLists(projects, "working", textColor)}
-          </Flex>
+          {projectLists(projects, "working", textColor)}
         </Flex>
         <Flex direction={"column"} mb="40px" px={{ base: "10px", sm: "0" }}>
-          <Heading fontSize="22px" fontWeight={500} mb="16px">
+          <Heading
+            fontSize="2xl"
+            fontFamily="noto serif sc"
+            fontWeight={500}
+            mb={4}
+          >
             🎸个人项目
           </Heading>
-          <Flex
-            column="column"
-            flexWrap="wrap"
-            justifyContent="center"
-            gap="26px"
-          >
-            {projectLists(projects, "personal", textColor)}
-          </Flex>
+          {projectLists(projects, "personal", textColor)}
         </Flex>
       </Flex>
     </Flex>
@@ -110,25 +107,29 @@ function projectLists(projects, type, textColor) {
     projectArray = projects.personal;
   }
 
-  return projectArray.map((project) => (
-    <Flex
-      w={{
-        base: "100%",
-        sm: "47.12%",
-        md: "332px",
-      }}
-      direction="column"
-    >
-      <Image borderRadius="xl" objectFit="cover" src={project.img} />
+  return (
+    <Flex column="column" flexWrap="wrap" justifyContent="center" gap="26px">
+      {projectArray.map((project) => (
+        <Flex
+          w={{
+            base: "100%",
+            md: "47.12%",
+          }}
+          direction="column"
+          key={project.name}
+        >
+          <Image borderRadius="xl" objectFit="cover" src={project.img} />
 
-      <Flex direction="column" mt="6px">
-        <Heading mb="4px" as="h3" fontFamily="inter" fontSize="18px">
-          {project.name}
-        </Heading>
-        <Text fontSize="16px" color={textColor}>
-          {project.description}
-        </Text>
-      </Flex>
+          <Flex direction="column" mt="6px">
+            <Heading mb="4px" as="h3" fontSize="18px">
+              {project.name}
+            </Heading>
+            <Text fontSize="16px" color={textColor}>
+              {project.description}
+            </Text>
+          </Flex>
+        </Flex>
+      ))}
     </Flex>
-  ));
+  );
 }

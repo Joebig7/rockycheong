@@ -6,8 +6,8 @@ import { Icon } from "@chakra-ui/react";
 function CustomerIcon({ children }) {
   return (
     <Icon
-      mt={{ base: "2.5px", tablet: "5px" }}
-      mr={{ base: "3", tablet: "0" }}
+      mt={{ base: "2.5px", md: "5px" }}
+      mr={{ base: "4", md: "0" }}
       pt={{ md: "1" }}
       boxSize={6}
       as={children}
