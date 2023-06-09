@@ -14,7 +14,7 @@ export default function Logo() {
           transform: "rotate(-6deg)",
         },
       }}
-      borderRadius="sm"
+      borderRadius={{"base":"md","sm":"sm"}}
       ml={{ base: "1", xl: "0" }}
     >
       <Link
