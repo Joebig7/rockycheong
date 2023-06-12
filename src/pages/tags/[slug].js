@@ -36,7 +36,6 @@ function TagDescription() {
   const router = useRouter();
   const { asPath } = router;
   let pathArray = asPath.split("/");
-  console.log(pathArray);
   let tag = pathArray[2];
   return (
     <Flex

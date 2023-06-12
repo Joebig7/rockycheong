@@ -26,6 +26,7 @@ export default function Tags({ tagsArray }) {
           as={NextLink}
           href={`/tags/${tag}`}
           _hover={{ textDecor: "none" }}
+          key={tag}
         >
           <Tag
             bg="brand.primary"

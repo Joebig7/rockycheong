@@ -25,7 +25,6 @@ export async function getStaticProps() {
 }
 
 function TopArticle({ allPostFrontMatter, bgColor }) {
-  console.log(`allPostFrontMatter ${JSON.stringify(allPostFrontMatter)}`)
   let topArticleArr = allPostFrontMatter.filter((article) => article.isTop);
   if (topArticleArr.length === 0) {
     return null;

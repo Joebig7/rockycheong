@@ -14,7 +14,7 @@ function FootLink() {
       textDecor="none"
       _hover={{ color: "brand.primary" }}
       as={NextLink}
-      href="/feature"
+      href="/timeline"
     >
       What's new
     </Link>

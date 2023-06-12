@@ -70,7 +70,8 @@ export default function Home() {
           </Link>
         </Flex>
       </Flex>
-      <Flex direction="column" mt={12}>
+      {/* 暂时不露出project */}
+      {/* <Flex direction="column" mt={12}>
         <Flex direction={"column"} mb="40px" px={{ base: 2.5, md: "0" }}>
           <Heading
             fontSize="2xl"
@@ -93,7 +94,7 @@ export default function Home() {
           </Heading>
           {projectLists(projects, "personal", textColor)}
         </Flex>
-      </Flex>
+      </Flex> */}
     </Flex>
   );
 }

@@ -33,9 +33,6 @@ export function getBlogPostData() {
 
 export function getAllPostSlugs() {
   const fileNames = fs.readdirSync(blogDirectory);
-
-  console.log("filenames" + fileNames);
-
   const paths = fileNames.map((fileName) => {
     return {
       params: {
@@ -53,7 +50,6 @@ export function getAllTags() {
   fileNames.reduce((allPosts, postSlug) => {
     const source = fs.readFileSync(path.join(blogDirectory, postSlug), "utf8");
     const { data } = matter(source);
-    console.log(JSON.stringify(data));
     let tagsArray = data.tags.split(",");
     tagsArray.map((tag) => set.add(tag));
   }, []);
@@ -63,7 +59,6 @@ export function getAllTags() {
 
 export function getAllTagsPath() {
   let tags = getAllTags();
-  console.log("tag===" + tags);
   const paths = tags.map((tag) => {
     return {
       params: {
